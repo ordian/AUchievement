@@ -1,0 +1,5 @@
+.idea
+Web/db.sqlite3
+*.pyc
+*.log
+*.pot
