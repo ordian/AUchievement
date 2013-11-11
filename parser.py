@@ -1,5 +1,5 @@
 # coding=utf-8
-import datetime
+import os
 import openpyxl
 
 
@@ -14,7 +14,8 @@ class StInfo(object):
         self.date = date
 
     def __repr__(self):
-        s = "%s %s %s/%s \t\t %s \t\t%s" % (self.name, self.surname, self.hw, self.task, self.score, self.date)
+        s = "%s %s %s/%s \t\t %s \t\t%s \t\t %s" % (
+        self.name, self.surname, self.hw, self.task, self.score, self.date, self.subject)
         return s.encode("utf-8")
 
 
@@ -40,6 +41,34 @@ def hw_number(task, course_list):
     return None
 
 
+def CO_parse(file):
+    """
+    Парсинг файла с оценками по комбинаторике
+    @param file: файл в формате OpenXML
+    """
+
+    workbook = openpyxl.load_workbook(filename=file)
+    for hw, sheet in enumerate(workbook.worksheets[:-1]):
+        meta = sheet.rows[0] # column names
+        if hw == 2:
+            begin_score_column = 2 # колонка с которой начинаются оценки
+            end_score_column = -4 # колонка где заканчиваются оценки
+        else:
+            begin_score_column = 3
+            end_score_column = -1
+
+        for row in sheet.rows[1:]:
+            surname, name = row[0].value, row[1].value
+            for task, score in enumerate(row[begin_score_column:end_score_column]):
+                task_number = meta[task + begin_score_column].value
+                if task_number is None: continue
+                student = StInfo(name, surname, u"Комбинаторика",
+                                 int(hw + 1),
+                                 task_number,
+                                 to_float(score.value), now)
+                StInfoList.append(student)
+
+
 def AS_parse(file):
     """
     Парсинг файла с оценками по алгебраическим структурам
@@ -62,10 +91,8 @@ def AS_parse(file):
                 AS_LIST.append(counter)
                 counter = 0
         AS_LIST.append(counter)
-        print AS_LIST
 
     workbook = openpyxl.load_workbook(filename=file)
-    now = datetime.datetime.now()
     for sheet in workbook.worksheets:
         meta = sheet.rows[0] # column names
         build_hw_count(sheet.rows[0])
@@ -73,7 +100,7 @@ def AS_parse(file):
             surname, name = row[1].value.split()
             for hw, score in enumerate(row[3:-8]):
                 student = StInfo(name, surname, u"Алгебраические структуры", hw_number(int(hw), AS_LIST),
-                                 str(int(meta[hw + 3].value)),
+                                 meta[hw + 3].value,
                                  to_float(score.value), now)
                 StInfoList.append(student)
 
@@ -102,7 +129,6 @@ def GT_parse(file):
 
 
     workbook = openpyxl.load_workbook(filename=file)
-    now = datetime.datetime.now()
     for sheet in workbook.worksheets:
         meta = sheet.rows[0] # column names
         build_hw_count(sheet.rows[1])
@@ -116,7 +142,14 @@ def GT_parse(file):
 
 if __name__ == "__main__":
     StInfoList = []
-    GT_parse("OpenXML/0AtjSko0XIgLWdFZnSUdnTmhublJ6OWF5V2MybUJ0MHc.xlsx")
-    AS_parse("OpenXML/0AhaIVBqbQZzvdElseEVUcGV5QV8tX1RzSnVIdnJoT0E.xlsx")
-    for st in StInfoList:
-        print st
+    folder = "OpenXML"
+    ext = "xlsx"
+
+    import courses, datetime
+
+    now = datetime.datetime.now()
+    GT_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['GT']), ext))
+    AS_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext))
+    CO_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['CO']), ext))
+
+    for st in StInfoList: print st
