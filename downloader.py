@@ -67,13 +67,13 @@ def download():
         logging.info("Folder %s doesn't exist, creating folder" % folder_name)
         os.mkdir(folder_name)
     google_drive = auth()
-    for course in courses.spreadsheets.values():
-        file_metadata = get_file_metadata(google_drive, course)
+    for course_name, course_file in courses.spreadsheets.items():
+        file_metadata = get_file_metadata(google_drive, course_file)
         content = get_openXML_content(google_drive, file_metadata)
         if content is None: continue
-        filepath = os.path.join("OpenXML", course + ".xlsx")
+        filepath = os.path.join("OpenXML", course_file + ".xlsx")
         with file(filepath, 'wb') as outputFile:
-            logging.info("Writing course '%s'" % course)
+            logging.info("Writing course '%s'..." % course_name)
             outputFile.write(content)
 
 
@@ -82,3 +82,4 @@ if __name__ == "__main__":
                         level=logging.DEBUG)
     logging.info("--------------------begin downloading----------------------")
     download()
+    logging.info("---------------------end downloading----------------------")
