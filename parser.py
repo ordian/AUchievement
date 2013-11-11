@@ -1,22 +1,7 @@
 # coding=utf-8
 import os
 import openpyxl
-
-
-class StInfo(object):
-    def __init__(self, name, surname, subject, hw, task, score, date):
-        self.name = name
-        self.surname = surname
-        self.subject = subject
-        self.hw = hw
-        self.task = task
-        self.score = score
-        self.date = date
-
-    def __repr__(self):
-        s = "%s %s %s/%s \t\t %s \t\t%s \t\t %s" % (
-            self.name, self.surname, self.hw, self.task, self.score, self.date, self.subject)
-        return s.encode("utf-8")
+from StudentInfo import StudentInfo
 
 
 def to_float(num):
@@ -43,11 +28,12 @@ def hw_number(task, course_list):
     return None
 
 
-def AL_parse(file, begin_score_column):
+def AL_parse(file, begin_score_column, StudentInfoList):
     """
     Парсинг файла с оценками по алгоритмам (обе подгруппы)
-    @param begin_score_column: номер столбца (с нуля) где начинаются оценки (у двух подгруппы они разные)
     @param file: файл в формате OpenXML
+    @param begin_score_column: номер столбца (с нуля) где начинаются оценки (у двух подгруппы они разные)
+    @param StudentInfoList: общий список студентов
     """
 
     def build_hw_count(row, start):
@@ -79,17 +65,18 @@ def AL_parse(file, begin_score_column):
             for task, score in enumerate(row[begin_score_column:]):
                 task_number = meta[task + begin_score_column].value
                 if task_number is None: continue
-                student = StInfo(name, surname, u"Алгоритмы",
+                student = StudentInfo(name, surname, u"Алгоритмы",
                                  hw_number(int(task), ALG_LIST),
                                  task_number,
                                  to_float(score.value), now)
-                StInfoList.append(student)
+                StudentInfoList.append(student)
 
 
-def CO_parse(file):
+def CO_parse(file, StudentInfoList):
     """
     Парсинг файла с оценками по комбинаторике
     @param file: файл в формате OpenXML
+    @param StudentInfoList: общий список студентов
     """
 
     workbook = openpyxl.load_workbook(filename=file)
@@ -107,17 +94,18 @@ def CO_parse(file):
             for task, score in enumerate(row[begin_score_column:end_score_column]):
                 task_number = meta[task + begin_score_column].value
                 if task_number is None: continue
-                student = StInfo(name, surname, u"Комбинаторика",
+                student = StudentInfo(name, surname, u"Комбинаторика",
                                  int(hw + 1),
                                  task_number,
                                  to_float(score.value), now)
-                StInfoList.append(student)
+                StudentInfoList.append(student)
 
 
-def AS_parse(file):
+def AS_parse(file, StudentInfoList):
     """
     Парсинг файла с оценками по алгебраическим структурам
     @param file: файл в формате OpenXML
+    @param StudentInfoList: общий список студентов
     """
 
     AS_LIST = []
@@ -144,16 +132,17 @@ def AS_parse(file):
         for row in sheet.rows[4:]:
             surname, name = row[1].value.split()
             for hw, score in enumerate(row[3:-8]):
-                student = StInfo(name, surname, u"Алгебраические структуры", hw_number(int(hw), AS_LIST),
+                student = StudentInfo(name, surname, u"Алгебраические структуры", hw_number(int(hw), AS_LIST),
                                  meta[hw + 3].value,
                                  to_float(score.value), now)
-                StInfoList.append(student)
+                StudentInfoList.append(student)
 
 
-def GT_parse(file):
+def GT_parse(file, StudentInfoList):
     """
     Парсинг файла с оценками по теории графов
     @param file: файл в формате OpenXML
+    @param StudentInfoList: общий список студентов
     """
 
     GRAPH_LIST = [] # число заданий в каждой домашке.
@@ -180,24 +169,35 @@ def GT_parse(file):
         for row in sheet.rows[1:]:
             surname, name = row[0].value, row[1].value
             for hw, score in enumerate(row[3:-2]):
-                student = StInfo(name, surname, u"Теория графов", hw_number(int(hw), GRAPH_LIST), meta[hw + 3].value,
+                student = StudentInfo(name, surname, u"Теория графов", hw_number(int(hw), GRAPH_LIST), meta[hw + 3].value,
                                  to_float(score.value), now)
-                StInfoList.append(student)
+                StudentInfoList.append(student)
 
 
-if __name__ == "__main__":
-    StInfoList = []
+import datetime
+now = datetime.datetime.now()
+
+def parse():
+    """
+    Запуск парсинга всех документов, что указаны в списке courses.py
+    @return: список студентов с оценками: список экземпляров класса StudentInfo
+    """
+    StudentInfoList = []
     folder = "OpenXML"
     ext = "xlsx"
 
-    import courses, datetime
+    import courses
 
-    now = datetime.datetime.now()
-    GT_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['GT']), ext))
-    AS_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext))
-    CO_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['CO']), ext))
-    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1']), ext), 5)
-    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL2']), ext), 4)
+    GT_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['GT']), ext), StudentInfoList)
+    AS_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext), StudentInfoList)
+    CO_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['CO']), ext), StudentInfoList)
+    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1']), ext), 5, StudentInfoList)
+    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL2']), ext), 4, StudentInfoList)
 
-    for key, st in enumerate(StInfoList):
-        print key, st
+    return StudentInfoList
+
+
+if __name__ == "__main__":
+    list = parse()
+    for key, student in enumerate(list):
+        print key, student
