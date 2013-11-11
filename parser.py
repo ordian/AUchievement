@@ -9,13 +9,18 @@ GRAPH_LIST = [9,15,23]
 StInfoList = []
 
 def hw_number_graph(hw):
-    if hw < GRAPH_LIST[0]:
-        return 1
-    elif hw < GRAPH_LIST[1]:
-        return 2
-    else:
-        return 3
-
+    """
+    Возвращает номер домашнего задания
+    из порядкового номера задачи
+    """
+    accumulator = 0
+    counter = 1
+    for limit in GRAPH_LIST:
+        accumulator += limit
+        if hw < accumulator:
+            return counter
+        counter += 1
+    return None
 
 class StInfo(object):
     def __init__(self, name, surname, subject, hw, task, score, date):
