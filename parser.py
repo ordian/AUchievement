@@ -33,7 +33,8 @@ class StInfo(object):
         self.date = date
 
     def __repr__(self):
-        print surname, name, subject, 
+        s = "%s %s | %s/%s : %s" % (self.name, self.surname, self.hw, self.task, self.score)
+        return s.encode("utf-8")
 
 def to_float(num):
     try:
