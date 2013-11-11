@@ -5,7 +5,7 @@ import xlrd
 import datetime
 
 # Глобальные переменные - зло!
-GRAPH_LIST = [9,15,23]
+GRAPH_LIST = [9,6,8]
 StInfoList = []
 
 def hw_number_graph(hw):
