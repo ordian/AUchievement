@@ -53,6 +53,6 @@ def parse_graph(file_graph):
         surname = row[0]
         name = row[1]
         for hw, score in enumerate(row[3:-2]):
-            StInfoList.append(StInfo(name, surname, u"Теория графов", hw_number_graph(int(hw)), to_float(meta[hw + 3]), to_float(score), now))
+            StInfoList.append(StInfo(name, surname, u"Теория графов", hw_number_graph(int(hw)), meta[hw + 3], to_float(score), now))
 
 
