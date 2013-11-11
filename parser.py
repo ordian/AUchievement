@@ -15,7 +15,7 @@ class StInfo(object):
 
     def __repr__(self):
         s = "%s %s %s/%s \t\t %s \t\t%s \t\t %s" % (
-        self.name, self.surname, self.hw, self.task, self.score, self.date, self.subject)
+            self.name, self.surname, self.hw, self.task, self.score, self.date, self.subject)
         return s.encode("utf-8")
 
 
@@ -23,6 +23,8 @@ def to_float(num):
     try:
         return float(num)
     except:
+        if '+' in unicode(num):
+            return 1.0
         return None
 
 
@@ -39,6 +41,49 @@ def hw_number(task, course_list):
             return counter
         counter += 1
     return None
+
+
+def AL_parse(file, begin_score_column):
+    """
+    Парсинг файла с оценками по алгоритмам (обе подгруппы)
+    @param begin_score_column: номер столбца (с нуля) где начинаются оценки (у двух подгруппы они разные)
+    @param file: файл в формате OpenXML
+    """
+
+    def build_hw_count(row, start):
+        """
+        Просматривает выданную строку и заполняет список ALG_LIST - число заданий в каждой домашке
+        Заполнение делается в соответствии с правилом: если у новой ячейки есть правая жирная граница, то это конец домашки
+        @param row: строка, в которой это правило выполняется
+        """
+        counter = 0
+        for cell in row[start:]:
+            style = cell.style.borders.right.border_style
+            counter += 1
+            if style != 'none':
+                ALG_LIST.append(counter)
+                counter = 0
+        if counter:
+            ALG_LIST.append(counter)
+
+    workbook = openpyxl.load_workbook(filename=file)
+    for sheet in workbook.worksheets:
+        ALG_LIST = [] # число заданий в каждой домашке.
+        meta = sheet.rows[0] # column names
+
+        build_hw_count(sheet.rows[0], begin_score_column)
+
+        for row in sheet.rows[1:]:
+            if row[0].value is None: continue
+            surname, name = row[1].value, row[2].value
+            for task, score in enumerate(row[begin_score_column:]):
+                task_number = meta[task + begin_score_column].value
+                if task_number is None: continue
+                student = StInfo(name, surname, u"Алгоритмы",
+                                 hw_number(int(task), ALG_LIST),
+                                 task_number,
+                                 to_float(score.value), now)
+                StInfoList.append(student)
 
 
 def CO_parse(file):
@@ -151,5 +196,8 @@ if __name__ == "__main__":
     GT_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['GT']), ext))
     AS_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext))
     CO_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['CO']), ext))
+    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1']), ext), 5)
+    AL_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL2']), ext), 4)
 
-    for st in StInfoList: print st
+    for key, st in enumerate(StInfoList):
+        print key, st
