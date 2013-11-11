@@ -7,3 +7,4 @@
 spreadsheets = {}
 spreadsheets['GT'] = "0AtjSko0XIgLWdFZnSUdnTmhublJ6OWF5V2MybUJ0MHc"
 spreadsheets['CO'] = "0AtjSko0XIgLWdHMzNjVSam5EdW52a0tNNTVXeVZtbmc"
+spreadsheets['AS'] = "0AhaIVBqbQZzvdElseEVUcGV5QV8tX1RzSnVIdnJoT0E"
