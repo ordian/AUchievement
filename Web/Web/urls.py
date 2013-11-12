@@ -10,6 +10,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^achievement/new', 'Achievement.views.new_achievement', name='new_achievement'),
-    url(r'^achievement/view', 'Achievement.views.view_achievements', name='view_achievement'),
+    url(r'^achievement/new', 'Achievement.views.new_student', name='new_student')
 )
