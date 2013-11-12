@@ -1,5 +1,6 @@
 # coding=utf-8
 import logging
+from achiever import achieve
 from downloader import download
 from parser import parse
 from updater import update
@@ -12,15 +13,19 @@ if __name__ == "__main__":
                         level=logging.ERROR)
 
     logging.info("--------------------begin downloading----------------------")
-    download()
+    # download()
     logging.info("---------------------end downloading----------------------")
 
 
     logging.info("--------------------begin parsing----------------------")
-    list = parse()
+    # list = parse()
     logging.info("---------------------end parsing----------------------")
 
 
     logging.info("--------------------begin update----------------------")
-    update(list)
+    # update(list)
     logging.info("---------------------end update----------------------")
+
+    logging.info("--------------------begin achivier----------------------")
+    achieve()
+    logging.info("---------------------end achivier----------------------")
