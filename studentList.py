@@ -35,7 +35,7 @@ studentList=[{'name': 'Аманов', 'surname' : 'Карим'},
              {'name': 'Ситдыкова', 'surname' : 'Надия'},
              {'name': 'Смолина', 'surname' : 'Ирина'},
              {'name': 'Старостина', 'surname' : 'Екатерина'},
-             {'name': 'Ясенев', 'surname' : 'Олег'}
+             {'name': 'Яснев', 'surname' : 'Олег'}
 
 
 ]
