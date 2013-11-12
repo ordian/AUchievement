@@ -14,3 +14,4 @@ spreadsheets['ML1'] = "0AoUO7sfz2x3ydE9YSmhuNnVxQWxBOGJkZUhfOVZPUEE" # Mosqueen
 spreadsheets['ML2'] = "0AiOIfVRpxaJ4dDZUVmUzMnNqYmMzUnAwSzNCckZvU2c" # Isaev
 spreadsheets['UX'] = "0Aif17q2hwUt4dHBqNjZzWU9mX0tMUy1vNkFYZy05bWc"
 
+courseList=spreadsheets.keys()
