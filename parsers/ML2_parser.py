@@ -3,6 +3,8 @@
 
 
 from MetaParser import *
+from StudentInfo import StudentInfo
+
 
 def simple_score(cell):
     return int(cell.style.fill.start_color.index == "FF00FF00")
@@ -19,6 +21,5 @@ def parse(fileOpenXML, time, studentList):
         for row in sheet.rows[1:]:
             surname, name = row[0].value.split()
             for task, score in enumerate(row[1:8]):
-                student = StInfo(name, surname, subject, 1 + int(task), 1 + int(task), simple_score(score), time)
+                student = StudentInfo(name, surname, subject, 1 + int(task), 1 + int(task), simple_score(score), time)
                 studentList.append(student)
-

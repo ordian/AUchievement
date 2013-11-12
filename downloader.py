@@ -3,10 +3,8 @@ import os
 import logging
 
 from apiclient.discovery import build
-from apiclient.errors import HttpError
 from httplib2 import Http
 from oauth2client.client import SignedJwtAssertionCredentials
-import sys
 
 import courses
 

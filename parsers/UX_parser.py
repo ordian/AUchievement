@@ -4,6 +4,7 @@
 
 from MetaParser import *
 
+
 def deal_with_kuzya(sheet, task):
     """
     Magic
@@ -24,9 +25,9 @@ def UX_parse(fileOpenXML):
     getname = lambda row: (row[1].value, row[2].value)
     leftborder = 10
     rightborder = None
-    metaparse(fileOpenXML, subject, skip, stop, getname, 
+    metaparse(fileOpenXML, subject, skip, stop, getname,
               leftborder, rightborder, to_float, deal_with_kuzya, now)
-   
+
 
 if __name__ == "__main__":
 #    StInfoList = []
@@ -34,6 +35,7 @@ if __name__ == "__main__":
 #    ext = "xlsx"#
 #
     import datetime
+
     now = datetime.datetime.now()
 #
 #    UX_parse("{0}.{1}".format(os.path.join(folder, courses.spreadsheets['UX']), ext))
