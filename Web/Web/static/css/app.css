@@ -240,3 +240,6 @@ html, body {
 }
 
 
+.people-list td > span {
+  font-size: 18px;
+}

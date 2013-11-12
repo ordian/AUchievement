@@ -1,6 +1,35 @@
 {% extends "Achievement/base.html" %}
 
 {% block title %}Люди{% endblock title %}
+{% block body %}
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover people-list">
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Достижения</th>
+        <th>Статистика</th>
+       </tr>
+
+  {% for person in people %}
+  <tr>
+    <td><span>{{ person.first_name }}</span></td>
+    <td><span>{{ person.last_name }}</span></td>
+    <td><a href="/achivements/id/{{ person.id }}"><i class="fa fa-trophy fa-3x gold"></i></a> </td>
+    <td><a href="/statistics/id/{{ person.id }}"><i class="fa fa-bar-chart-o fa-3x silver"></i></a></td>
+  </tr>
+    
+  {% endfor %}
+
+
+    </table>
+  </div>
+</div>
+{% endblock body %}
+
+
 
 {% block scripts %}
   <script type="text/javascript">

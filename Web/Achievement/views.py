@@ -27,7 +27,8 @@ def dashboard(request):
 
 
 def people(request):
-    return render(request, 'Achievement/people.html')
+    people = Student.objects.all()
+    return render(request, 'Achievement/people.html', {'people': people})
 
 
 def statistics(request):
