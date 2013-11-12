@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default" role="navigation">
+
+<div class="container">
+
+  <div class="navbar-header">
+    <a class="navbar-brand" href="{% url 'achievements' %}"><i class="fa fa-level-up"></i> AUchievement</a>
+  </div>
+
+  <ul class="nav navbar-nav">
+    <li id="nav-achievements">
+      <a href="{% url 'achievements' %}"><i class="fa fa-trophy"></i> Достижения</a>
+    </li>
+    <li id="nav-statistics">
+      <a href="{% url 'statistics' %}"><i class="fa fa-bar-chart-o"></i> Статистика</a>
+    </li>
+    <li id="nav-people">
+      <a href="{% url 'people' %}"><i class="fa fa-users"></i> Люди</a>
+    </li>    
+  </ul><!-- /.navbar-left -->
+
+  <ul class="nav navbar-nav navbar-right">
+  
+    <li id="nav-exit">
+      <a href="#"><i class="fa fa-sign-out"></i> Выйти</a>
+    </li>   
+
+  </ul><!-- /.navbar-right -->
+
+</div><!-- /.container -->
+
+</nav>

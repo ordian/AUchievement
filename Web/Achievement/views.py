@@ -16,3 +16,14 @@ def view_achievements(request):
   achievements = Achievement.objects.all()
   return HttpResponse("You got %s achievements" % (len(achievements),))
 
+def dashboard(request):
+  return redirect('statistics/')
+
+def people(request):
+  return render(request, 'Achievement/people.html')
+
+def statistics(request):
+  return render(request, 'Achievement/statistics.html')
+
+def achievements(request):
+  return render(request, 'Achievement/achievements.html')
