@@ -1,0 +1,45 @@
+{% extends "Achievement/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Достижения{% endblock title %}
+
+{% block body %}
+
+  <div class="ribbon">
+    <div class="ribbon-stitches-top"></div>
+      <strong class="ribbon-content"><h1>Твои Достижения</h1></strong>
+    <div class="ribbon-stitches-bottom"></div>
+  </div>
+
+  <div class="row badges">
+    
+    <div class="col-md-5 badge">
+
+      <div class="badge">
+        <img src="{% static "img/pyromaniac.png" %}" class="badge-img img-circle">
+        <div class="badge-title">HOT!HOT!HOT!</div>
+      </div>      
+    
+    </div>
+
+    <div class="col-md-5 badge">
+
+      <div class="badge">
+        <img src="{% static "img/burning-book.png" %}" class="badge-img img-circle">
+        <div class="badge-title">HOT!HOT!HOT!</div>
+      </div>      
+    
+    </div>
+
+  </div> <!-- /.row badges -->
+
+  
+{% endblock body %}
+
+{% block scripts %}
+  <script type="text/javascript">
+  $(function() {
+    $('#nav-achievements').addClass('active');
+  });
+  </script>
+{% endblock scripts %}
