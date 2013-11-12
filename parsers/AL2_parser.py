@@ -13,5 +13,5 @@ def parse(fileOpenXML, time):
     leftborder = 4
     rightborder = None
     metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, to_float,  time, 0, 1)
+              leftborder, rightborder, to_float, time, 0, 1)
    

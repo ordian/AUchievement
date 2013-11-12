@@ -1,0 +1,1 @@
+CREATE INDEX "main"."mark_index" ON Achievement_mark (studentID_id ASC, courseID_id ASC, hwNo ASC, taskNo ASC);
