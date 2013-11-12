@@ -10,13 +10,14 @@ sys.path.append('Web')
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
-def TOP_achieve(courseCode, achieve_name, top_num):
+def TOP_achieve(courseCode, achieve_descr, top_num):
     """
+    Топ top_num студентов по предмету courseCode
     @param courseCode: предмет по которому строится топ
     @param achieve_name: имя ачивки
     @param top_num: нужное число студентов в топе
     """
-    achieve = Achievement.objects.get_or_create(achievement=courseCode, description=achieve_name, defaults={})[0]
+    achieve = Achievement.objects.get_or_create(achievement=courseCode, description=achieve_descr, defaults={})[0]
     course = Course.objects.get(course_code=courseCode)
     summ = {}
     for student in Student.objects.all():
@@ -30,4 +31,4 @@ def TOP_achieve(courseCode, achieve_name, top_num):
             AchievedAchievement.objects.get_or_create(achievementID = achieve , studentID = Student.objects.get(pk = id), defaults={})
 
 # example
-TOP_achieve('CO', u"Великие комбинаторы", 10)
+# TOP_achieve('CO', u"Великие комбинаторы", 10)
