@@ -3,13 +3,20 @@ AUchievement
 
 DevDays project
 
+Чтобы все собрать, нужно:
 
-Для синхронизации базы нужно зайти в (project_dir)/Web, сделать 
+Создать базу данных: для этого зайти в (project_dir), сделать 
 ```bash
-./manage.py syncdb
+Web/manage.py syncdb
 ```
 
-Модели лежат в 
+Затем заполнить ее начальными значениями, для этого сказать
+```bash
+python initial_fill.py
 ```
-(project_dir)/Web/Achievement/models.py
+
+Затем запустить главный скрипт, который качает документы, парсит их, обновляет базу данных (работает около 30 секунд)
+
+```bash
+python main.py
 ```
