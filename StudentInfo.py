@@ -21,6 +21,6 @@ class StudentInfo(object):
         self.date = date
 
     def __repr__(self):
-        s = "%s %s %s/%s \t\t %s \t\t%s \t\t %s" % (
+        s = "%s %s %s/%s %s %s %s" % (
             self.name, self.surname, self.hw, self.task, self.score, self.date, self.subject)
         return s.encode("utf-8")
