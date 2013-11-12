@@ -1,81 +1,201 @@
 {% extends "Achievement/base.html" %}
+{% load staticfiles %}
 
 {% block title %}Статистика{% endblock title %}
 
 {% block body %}
   <div class="row course-progress">
-    <div class="col-md-6 progress-entry">
+    <div class="col col-md-7 progress-daily">
+      
       <div class="row">
-        <div class="col-md-8 progress-label">Алгебра</div>          
+        <div class="col-md-7 progress-label">Алгебра</div>          
       </div>
+      
+      <div class="row">
+        <div class="col-md-7 progress-log">
+          <div class="activity">1</div>
+          <div class="activity">2</div>
+          <div class="activity">4</div>
+          <div class="activity">4</div>
+          <div class="activity">4</div>
+          <div class="activity">1</div>
+          <div class="activity">1</div>
 
-      <div class="row">        
-        <div class="progress">
-            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-              <span class="sr-only">20% Complete</span>
-            </div>
-          </div>
+          <canvas class="log-canvas" width="650px" height="200px"></canvas>
+        </div>    
       </div>
 
     </div>
-  </div>
 
-  <div class="row course-progress">
-    <div class="col-md-6 progress-entry">
+    <div class="col col-md-4 progress-overall pull-right">
       <div class="row">
-        <div class="col-md-8 progress-label">Комбинаторика</div>          
+        <div class="col-md-12 progress-label">Выполнил</div> 
+        <canvas class="progress-doughnut fill-12" width="200px" height="200px"></canvas>         
       </div>
-
-      <div class="row">        
-        <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-              <span class="sr-only">60% Complete</span>
-            </div>
-          </div>
-      </div>
-
     </div>
   </div>
-
-  <div class="row course-progress">
-    <div class="col-md-6 progress-entry">
-      <div class="row">
-        <div class="col-md-8 progress-label">Графы</div>          
-      </div>
-
-      <div class="row">        
-        <div class="progress">
-            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-              <span class="sr-only">40% Complete</span>
-            </div>
-          </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="row course-progress">
-    <div class="col-md-6 progress-entry">
-      <div class="row">
-        <div class="col-md-8 progress-label">Алгоритмы</div>          
-      </div>
-
-      <div class="row">        
-        <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-              <span class="sr-only">90% Complete</span>
-            </div>
-          </div>
-      </div>
-
-    </div>
-  </div>
-
   
+
+  <div class="row course-progress">
+    <div class="col col-md-7 progress-daily">
+      <div class="row">
+        <div class="col-md-7 progress-label">Комбинаторика</div>          
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 progress-log">
+          <div class="activity">6</div>
+          <div class="activity">2</div>
+          <div class="activity">3</div>
+          <div class="activity">4</div>
+          <div class="activity">5</div>
+          <div class="activity">6</div>
+
+          <canvas class="log-canvas" width="650px" height="200px"></canvas>
+        </div>    
+      </div>
+    </div>
+    <div class="col col-md-4 progress-overall pull-right">
+      <div class="row">
+        <div class="col-md-12 progress-label">Выполнил</div> 
+        <canvas class="progress-doughnut fill-40" width="200px" height="200px"></canvas>         
+      </div>
+    </div>
+  </div>
+
+  <div class="row course-progress">
+    <div class="col col-md-7 progress-daily">
+      <div class="row">
+        <div class="col-md-7 progress-label">Графы</div>          
+      </div>
+
+      <div class="col-md-7 progress-log">
+          <div class="activity">2</div>
+          <div class="activity">1</div>
+          <div class="activity">3</div>
+          <div class="activity">0</div>
+          <div class="activity">8</div>
+          <div class="activity">5</div>
+
+          <canvas class="log-canvas" width="650px" height="200px"></canvas>
+        </div>   
+    </div>
+    <div class="col col-md-4 progress-overall pull-right">
+      <div class="row">
+        <div class="col-md-12 progress-label">Выполнил</div> 
+        <canvas class="progress-doughnut fill-60" width="200px" height="200px"></canvas>         
+      </div>
+    </div>
+  </div>
+
+  <div class="row course-progress">
+    <div class="col col-md-7 progress-daily">
+      <div class="row">
+        <div class="col-md-7 progress-label">Матлогика</div>          
+      </div>
+
+      <div class="col-md-7 progress-log">
+          <div class="activity">2</div>
+          <div class="activity">4</div>
+          <div class="activity">2</div>
+          <div class="activity">1</div>
+          <div class="activity">3</div>
+
+          <canvas class="log-canvas" width="650px" height="200px"></canvas>
+        </div>   
+    </div>
+    <div class="col col-md-4 progress-overall pull-right">
+      <div class="row">
+        <div class="col-md-12 progress-label">Выполнил</div> 
+        <canvas class="progress-doughnut fill-80" width="200px" height="200px"></canvas>         
+      </div>
+    </div>
+  </div>
 {% endblock body %}
 
 {% block scripts %}
+  <script type="text/javascript" src="{% static "js/Chart.min.js" %}"></script>
   <script type="text/javascript">
-    $('#nav-statistics').addClass('active');
+    $(function() {
+      $('#nav-statistics').addClass('active');
+
+      var logs = $('.progress-log');
+      for(var i = 0; i < logs.length; i++) {
+        var log = $(logs[i]);
+        var activity = log.find('.activity');
+        var data = [];
+        var labels = [];
+        var max = 0;
+        for(var j = 0; j < activity.length; j++) {
+          var value = parseInt(activity[j].innerText, 10);
+          if(value > max) {
+            max = value;
+          }
+          data.push(activity[j].innerText);
+          labels.push('hw '+(j+1).toString());
+        }
+
+        var options = {
+          scaleOverride: true, 
+          scaleStartValue: 0, 
+          scaleStepWidth: 1,  
+          scaleSteps: max
+        };
+
+        var chart_data = {
+          labels: labels, 
+          datasets: [{fillColor: '#3a87ad', data: data}] 
+        };
+
+        new Chart(log.find('canvas')[0].getContext('2d')).Bar(chart_data, options);
+      }
+
+
+      var doughnuts = $('.progress-doughnut');
+      
+      for(var i = 0; i < doughnuts.length; i++) {
+
+        var data = [];
+        var classes = $(doughnuts[i]).attr("class").split(' ');
+        console.debug(classes);
+        for(var j = 0; j < classes.length; j++) {
+          var dash_split = classes[j].split('-');
+          if(dash_split[0] === 'fill') {
+            var fill = parseInt(dash_split[1], 10);
+            var color = '#949FB1';
+            if(fill < 40) {
+              color = '#b94a48';
+            }
+
+            if(fill >= 40 && fill < 60) {
+              color = '#c09853';
+            }
+
+            if(fill >= 60 && fill < 80) {
+              color = '#3a87ad';
+            }
+
+            if(fill >= 80) {
+              color = '#468847';
+            }
+            data.push({value: fill, color: color});
+            data.push({value: 100-fill, color: '#D5D5D5'});
+            break;
+          }
+        }
+
+        var my_doughnut = new Chart(doughnuts[i].getContext("2d")).Doughnut(data);
+      }
+
+      var rows = $('.course-progress');
+      var next = function(rownum) {
+        if(rownum < rows.length - 1) {
+          $(rows[rownum]).show('slide', function() {next(rownum+1)});
+        } else {
+          $(rows[rownum]).show('slide');
+        }
+      }
+      next(0);
+    });
   </script>
 {% endblock scripts %}
