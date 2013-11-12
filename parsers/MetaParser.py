@@ -12,7 +12,7 @@ def to_float(num):
     except:
         if '+' in unicode(num):
             return 1.0
-        return None
+        return 0.0
 
 
 def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder, convert_score, time,

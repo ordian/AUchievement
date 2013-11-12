@@ -7,7 +7,7 @@ sys.path.append('Web')
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
-def hot_n_achiever(limit, course_code):
+def hot_n_achiever(course_code, limit):
     """
     Проставляет всем студентам ачивку "решил N задач по указанному предмету"
     @param limit: сколько баллов надо набрать, чтобы получить ачивку
