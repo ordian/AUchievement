@@ -10,6 +10,17 @@ sys.path.append('Web')
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
+course_to_top = {}
+course_to_top["GT"]  = "графоман"
+course_to_top["CO"]  = "комбинатор"
+course_to_top["AS"]  = "и ужасный"
+course_to_top["AL1"] = "алгоритмист"
+course_to_top["AL2"] = "алгоритмист"
+course_to_top["ML1"] = "и логичный"
+course_to_top["ML2"] = "и логичный"
+course_to_top["UX"]  = "питонист-башолюб"
+
+
 def TOP_achieve(courseCode, achieve_descr, top_num):
     """
     Топ top_num студентов по предмету courseCode
