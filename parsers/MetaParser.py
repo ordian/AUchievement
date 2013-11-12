@@ -76,6 +76,8 @@ def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder
         build_hw_count(sheet.rows[skip])
         for row in sheet.rows[skip:stop]:
             surname, name = getname(row)
+            name = name.replace(u'ё', u'е')
+            surname = surname.replace(u'ё', u'е')
             header = sheet.rows[0]
             for task, score in enumerate(row[leftborder:rightborder]):
                 task_number = header[task + leftborder].value

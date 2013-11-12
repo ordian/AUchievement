@@ -28,5 +28,7 @@ def parse():
     AL1_parser.parse(AL1_file, time)
     AL2_parser.parse(AL2_file, time)
 
+    return StudentInfoList
+
     # ML1_parser.parse(ML1_file, time) bug!
     # ML2_parser.parse(ML2_file, time) bug!

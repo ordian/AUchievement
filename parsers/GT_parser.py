@@ -6,7 +6,7 @@ from MetaParser import *
 
 
 def parse(fileOpenXML, time):
-    subject = u"Теория графов"
+    subject = "GT"
     skip = 1
     stop = 39
     getname = lambda row: (row[0].value, row[1].value)

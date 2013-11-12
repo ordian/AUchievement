@@ -6,7 +6,7 @@ from MetaParser import *
 
 
 def parse(fileOpenXML, time):
-    subject = u"Алгебраические структуры"
+    subject = u"AS"
     skip = 4
     stop = 29
     getname = lambda row: row[1].value.split()

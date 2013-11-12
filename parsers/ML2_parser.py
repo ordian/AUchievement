@@ -14,7 +14,7 @@ def parse(fileOpenXML, time, studentList):
     """
     HARDCORE
     """
-    subject = u"Математическая логика"
+    subject = u"ML2"
     workbook = openpyxl.load_workbook(filename=fileOpenXML)
     for sheet in workbook.worksheets:
         assert isinstance(sheet, openpyxl.worksheet.Worksheet)

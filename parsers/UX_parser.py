@@ -19,7 +19,7 @@ def UX_parse(fileOpenXML):
     """
     Not tested yet
     """
-    subject = u"Unix и скриптовые языки"
+    subject = u"UX"
     skip = 5
     stop = 31
     getname = lambda row: (row[1].value, row[2].value)
