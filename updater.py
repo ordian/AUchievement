@@ -2,6 +2,7 @@
 import logging
 import os
 import sys
+from timer import timer
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
@@ -12,6 +13,7 @@ from Web.Achievement.models import Student, Course, Mark
 from django.core.exceptions import ObjectDoesNotExist
 
 
+@timer
 def update(studentList):
     studentList = list(studentList)
     total = len(studentList)

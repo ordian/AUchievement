@@ -3,11 +3,12 @@ import os
 
 import courses
 from parsers import AL1_parser, AL2_parser, CO_parser, GT_parser, AS_parser
+from timer import timer
 
 
 StudentInfoList = []
 
-
+@timer
 def parse():
     time = datetime.datetime.now()
 
@@ -19,8 +20,8 @@ def parse():
     AS_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext)
     AL1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1']), ext)
     AL2_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL2']), ext)
-    ML1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML1']), ext)
-    ML2_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML2']), ext)
+    # ML1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML1']), ext)
+    # ML2_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML2']), ext)
 
     GT_parser.parse(GT_file, time)
     CO_parser.parse(CO_file, time)

@@ -13,19 +13,19 @@ if __name__ == "__main__":
                         level=logging.ERROR)
 
     logging.info("--------------------begin downloading----------------------")
-    # download()
+    download()
     logging.info("---------------------end downloading----------------------")
 
 
     logging.info("--------------------begin parsing----------------------")
-    # list = parse()
+    list = parse()
     logging.info("---------------------end parsing----------------------")
 
 
     logging.info("--------------------begin update----------------------")
-    # update(list)
+    update(list)
     logging.info("---------------------end update----------------------")
 
-    logging.info("--------------------begin achivier----------------------")
+    logging.info("--------------------begin achiever----------------------")
     achieve()
-    logging.info("---------------------end achivier----------------------")
+    logging.info("---------------------end achiever----------------------")

@@ -7,6 +7,7 @@ from httplib2 import Http
 from oauth2client.client import SignedJwtAssertionCredentials
 
 import courses
+from timer import timer
 
 
 def auth():
@@ -53,7 +54,7 @@ def get_openXML_content(service, drive_file):
         logging.error("Exception occurred while downloading file: %s" % error)
         return None
 
-
+@timer
 def download():
     """
     Скачивает все документы, перечисленные в файле courses.py в формате OpenXML
