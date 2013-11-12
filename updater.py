@@ -19,8 +19,7 @@ def update(studentList):
     total = len(studentList)
     for num, student_info in enumerate(studentList):
         assert isinstance(student_info, StudentInfo)
-        if not student_info.score: continue
-
+        
         if num % 500 == 0:
             print "{0}/{1}".format(num, total)
 
