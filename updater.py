@@ -19,9 +19,9 @@ def update(studentList):
     total = len(studentList)
     for num, student_info in enumerate(studentList):
         assert isinstance(student_info, StudentInfo)
-        
+
         if num % 500 == 0:
-            print "{0}/{1}".format(num, total)
+            print "import {0}/{1}".format(num, total)
 
         try:
             student = Student.objects.get(first_name=student_info.name, last_name=student_info.surname)
