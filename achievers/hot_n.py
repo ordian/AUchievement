@@ -13,8 +13,8 @@ def hot_n_achiever(limit, course_code):
     @param limit: сколько баллов надо набрать, чтобы получить ачивку
     @param course_code: код курса (GT or AL1 и так далее)
     """
-    achieve_name = "{0}_{1}_{2}".format("HOT", limit, course_code)
-    achievement = Achievement.objects.get_or_create(achievement=achieve_name)[0]
+    achieve_code = "{0}_{1}_{2}".format("HOT", limit, course_code)
+    achievement = Achievement.objects.get_or_create(code=achieve_code)[0]
     course_id = Course.objects.get(course_code=course_code).pk
 
     score_sum = {}
