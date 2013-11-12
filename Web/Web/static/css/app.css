@@ -50,14 +50,20 @@ html, body {
 
 .course-progress {
   margin-bottom: 40px;
+  display: none;
 }
 
-.course-progress>.progress-entry {
-  background-color: #eee;
-  border-radius: 10px;
+.course-progress>.col {
+  background-color: #FAFAFA;
+  border-radius: 0px;
+  border: solid 1px #DDD;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-top: 40px;
 }
 
-.course-progress>.progress-entry .progress-label {
+.course-progress .progress-label {
   color: #555;
   font-size: 30px;
   font-weight: 200px;
@@ -69,41 +75,69 @@ html, body {
   margin-right: 15px;
 }
 
+.course-progress .col {
+  height: 270px;
+}
+
+.progress-doughnut {
+  margin-left: 25%;
+}
+
 
 /* BADGES */
 
 .badge {
   background-color: #F6F6F6;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-right: 50px;
+  margin-bottom: 20px;
+  display: none;
 }
 
 .badge-img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   z-index: 2;
 }
 
 .badge:hover .badge-img {
+  filter: brightness(0.5);
+  
   -ilter: brightness(0.5);
   -webkit-filter: brightness(0.5);
-  -moz-filter: brightness(0.5);
   -o-filter: brightness(0.5);
   -ms-filter: brightness(0.5);
-}
-
-.badge:hover .badge-title {
-  display: block;
 }
 
 .badge-title {
   display: none;
   position: absolute;
-  width: 200px;
-  top: 50%;
+  top:42%;
+  text-align: center;
+  width: 250px;  
   z-index: 2;
   font-size: 18px;
+}
+
+.badge-title hr {
+  width: 80%;
+}
+
+.badge-description {
+
+  display: none;
+  position: absolute;
+  top:65%;
+  text-align: center;
+  width: 250px;  
+  z-index: 2;
+  font-style: italic;
+}
+
+
+.activity {
+  display: none;
 }
 
 /* COLOURS */

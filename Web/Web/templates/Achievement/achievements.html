@@ -13,24 +13,115 @@
 
   <div class="row badges">
     
-    <div class="col-md-5 badge">
+    <div class="col-md-4 badge">
 
       <div class="badge">
         <img src="{% static "img/pyromaniac.png" %}" class="badge-img img-circle">
-        <div class="badge-title">HOT!HOT!HOT!</div>
+        <div class="badge-title">Pyromaniac<hr></div>
+        <div class="badge-description">100% алгебраических структур</div>
+
       </div>      
     
     </div>
 
-    <div class="col-md-5 badge">
+    <div class="col-md-4 badge">
 
       <div class="badge">
         <img src="{% static "img/burning-book.png" %}" class="badge-img img-circle">
-        <div class="badge-title">HOT!HOT!HOT!</div>
+        <div class="badge-title">Burning book<hr></div>
+        <div class="badge-description">80% алгебраических структур</div>
+
       </div>      
     
     </div>
 
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-bronze.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Bronze Final<hr></div>
+        <div class="badge-description">50% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Silver Final<hr></div>
+        <div class="badge-description">70% Overall</div>
+
+      </div>      
+    
+    </div>
+
+    <div class="col-md-4 badge">
+
+      <div class="badge">
+        <img src="{% static "img/crown-gold.png" %}" class="badge-img img-circle">
+        <div class="badge-title">Gold Final<hr></div>
+        <div class="badge-description">90% Overall</div>
+
+      </div>      
+    
+    </div>
   </div> <!-- /.row badges -->
 
   
@@ -40,6 +131,17 @@
   <script type="text/javascript">
   $(function() {
     $('#nav-achievements').addClass('active');
+    $('.badge').hover(function() {
+      $(this).find('.badge-title, .badge-description').fadeIn('fast');
+    },
+    function() {
+      $(this).find('.badge-title, .badge-description').fadeOut('fast');
+    });
+
+    var badges = $('.badge');
+    for(var i = 0; i < badges.length; i++) {
+      $(badges[i]).fadeIn('slow');
+    }
   });
   </script>
 {% endblock scripts %}
