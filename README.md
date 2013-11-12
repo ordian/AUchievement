@@ -20,3 +20,9 @@ python initial_fill.py
 ```bash
 python main.py
 ```
+
+И запустить сервер:
+
+```bash
+Web/manage.py runserver
+```
