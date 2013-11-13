@@ -51,17 +51,17 @@ html, body {
 
 .badge {
   background-color: #F6F6F6;
-  width: 250px;
-  height: 250px;
-  margin-right: 50px;
-  margin-left: 50px;
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  margin-left: 20px;
   margin-bottom: 20px;
   display: none;
 }
 
 .badge-img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   z-index: 2;
 }
 
@@ -79,7 +79,7 @@ html, body {
   position: absolute;
   top:42%;
   text-align: center;
-  width: 250px;  
+  width: 200px;  
   z-index: 2;
   font-size: 18px;
 }
@@ -94,7 +94,7 @@ html, body {
   position: absolute;
   top:65%;
   text-align: center;
-  width: 250px;  
+  width: 200px;  
   z-index: 2;
   font-style: italic;
 }
