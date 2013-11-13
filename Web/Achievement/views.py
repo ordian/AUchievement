@@ -109,12 +109,7 @@ def achievements(request, id):
 
         a_type, param, course_code = code.split('_')
 
-        if a_type == 'FULLHW':
-            badge['name'] = ach.description
-        elif a_type == 'HOT':
-            badge['name'] = ach.description
-        elif a_type == 'TOP':
-            badge['name'] = ach.description
+        badge['name'] = ach.description.replace(u' процентов', u'%')
 
         course_name = Course.objects.get(course_code__exact=course_code).course_name
         badge['description'] = course_name

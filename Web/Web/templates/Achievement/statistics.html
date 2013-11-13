@@ -60,30 +60,32 @@
         var labels = [];
         var max = 0;
         var min = 1000000;
-        var avg_dif = 0
+        var uniq = {};
+        var count = 0;
         for(var j = 0; j < activity.length; j++) {
           var value = parseInt(activity[j].innerText, 10);
+          if(uniq.value === undefined) {
+            uniq.value = true;
+            count++;
+          }
           if(value > max) {
             max = value;
           }
           if(value < min) {
             min = value;
           }
-          if(i > 0) {
-            Math.abs(value - prev);
-          }
-          data.push(activity[j].innerText);
+          data.push(value);
           labels.push('hw '+(j+1).toString());
-          var prev = value;
         }
-        avg_dif/=1.0*activity.length;
+
+        min = Math.max(min-2, 0)
 
         var options = {
           scaleOverride: true, 
-          scaleStartValue: min-2, 
-          scaleStepWidth: 2,  
-          scaleSteps: 2,
-          scaleLineWidth : 1,
+          scaleStartValue: min, 
+          scaleStepWidth: 1.0*(max-min)/count,  
+          scaleSteps: count,
+          scaleShowLabels: true,
           barValueSpacing: 10
         };
 
