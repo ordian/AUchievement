@@ -58,15 +58,15 @@ def parse(fileOpenXML, time):
             surname = surname.replace(u'ё', u'е')
             header = sheet.rows[header_row]
             for task, score in enumerate(row[leftborder:rightborder]):
-                task_number = task
+                task_number = task % 12
 
                 student = StudentInfo(name, surname, subject, hw_number_l(task, hw + firstSheet), task_number,
                                       convert_score(score.value), time)
                 parser.StudentInfoList.append(student)
-    metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, convert, time, 0, hw_number_l=hw_number_l, header_row=2)
+                
     skip = 30
     stop = 42
+    
     for hw, sheet in enumerate(workbook.worksheets[firstSheet:lastSheet]):
         assert isinstance(sheet, openpyxl.worksheet.Worksheet)
         build_hw_count(sheet.rows[skip])
