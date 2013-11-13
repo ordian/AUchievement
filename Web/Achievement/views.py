@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.db.models import Sum, Max
 from django.db import connection
 
-from models import Student, Course, Mark
+from models import Student, Course, Mark, AchievedAchievement
 
 def addStudents(nameList):
     for t in nameList:
@@ -96,5 +96,12 @@ def statistics(request, id):
     return render(request, 'Achievement/statistics.html', data)
 
 
-def achievements(request):
-    return render(request, 'Achievement/achievements.html')
+def achievements(request, id):
+    student = Student.objects.get(id=id)
+    achieves = AchievedAchievement.objects.filter(studentID__exact=student.id)
+    achievements = [achieve.achievementID for achieve in achieves]
+    data = {
+      'achievements': achievements,
+    }
+
+    return render(request, 'Achievement/achievements.html', data)

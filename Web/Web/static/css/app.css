@@ -192,7 +192,7 @@ html, body {
 /* RIBBON (generated http://livetools.uiparade.com/ribbon-builder.html) */
 
 .ribbon {
-  width: 342px;
+  width: 450px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -213,8 +213,8 @@ html, body {
   font-family: 'Helvetica Neue',Helvetica, sans-serif;
 }
 .ribbon h1 {
-  font-size: 25px!important;
-  color: #801111;
+  font-size: 30px!important;
+  color: #FFF;
   text-shadow: #d65c5c 0 1px 0;
   margin:0px;
   padding: 15px 10px;

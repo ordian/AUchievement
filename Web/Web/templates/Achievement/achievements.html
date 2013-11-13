@@ -13,115 +13,19 @@
 
   <div class="row badges">
     
+    {% for badge in achievements %}
     <div class="col-md-4 badge">
 
       <div class="badge">
         <img src="{% static "img/pyromaniac.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Pyromaniac<hr></div>
-        <div class="badge-description">100% алгебраических структур</div>
+        <div class="badge-title">{{ badge.code }}<hr></div>
+        <div class="badge-description">{{ badge.description }}</div>
 
       </div>      
     
     </div>
+    {% endfor %}
 
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/burning-book.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Burning book<hr></div>
-        <div class="badge-description">80% алгебраических структур</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-bronze.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Bronze Final<hr></div>
-        <div class="badge-description">50% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-silver.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Silver Final<hr></div>
-        <div class="badge-description">70% Overall</div>
-
-      </div>      
-    
-    </div>
-
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static "img/crown-gold.png" %}" class="badge-img img-circle">
-        <div class="badge-title">Gold Final<hr></div>
-        <div class="badge-description">90% Overall</div>
-
-      </div>      
-    
-    </div>
   </div> <!-- /.row badges -->
 
   
