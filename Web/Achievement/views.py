@@ -60,9 +60,6 @@ def statistics(request, id):
         'completion': course_mark[course]
       }
 
-    for field in Mark._meta.fields:
-      print field.get_attname_column()
-
     courses = Course.objects.all();
     course_overall = dict()
     for course in courses:
