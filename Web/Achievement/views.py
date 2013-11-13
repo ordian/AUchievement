@@ -118,7 +118,7 @@ def achievements(request, id):
       elif a_type == 'HOT':
         badge['name'] = u'Решил %s задач' % (param,)
       elif a_type == 'TOP':
-        badge['name'] = u'Топ %ы' % (param,)
+        badge['name'] = u'Топ %s' % (param,)
 
       course_name = Course.objects.get(course_code__exact=corse_code).course_name
       badge['description'] = course_name
