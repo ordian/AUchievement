@@ -31,6 +31,7 @@ def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder
     @param studentList: итоговый список студентов
     @param firstSheet: индекс первой таблицы
     @param lastSheet: 1 + индекс последней таблицы
+    @param header_row: индекс строки заголовка
     """
     COURSE_LIST = [] # число заданий в каждой домашке
 
