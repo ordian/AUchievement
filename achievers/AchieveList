@@ -1,0 +1,10 @@
+AchieveList = {}
+AchieveList["GT"]  = "графоман"
+AchieveList["CO"]  = "комбинатор"
+AchieveList["AS"]  = "и ужасный"
+AchieveList["AL1SE"] = "алгоритмист"
+AchieveList["AL1BI"] = "алгоритмист"
+AchieveList["AL2"] = "алгоритмист"
+AchieveList["ML1"] = "и логичный"
+AchieveList["ML2"] = "и логичный"
+AchieveList["UX"]  = "питонист-башолюб"
