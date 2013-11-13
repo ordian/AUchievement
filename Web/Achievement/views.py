@@ -89,7 +89,8 @@ def statistics(request, id):
     data = {
       'courses': courses_list, 
       'activities': homework_completion,
-      'overall': course_overall
+      'overall': course_overall,
+      'name': student.first_name + ' ' + student.last_name
     }
 
     return render(request, 'Achievement/statistics.html', data)

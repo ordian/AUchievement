@@ -63,11 +63,16 @@ html, body {
   margin-top: 40px;
 }
 
-.course-progress .progress-label {
+.progress-label {
   color: #555;
   font-size: 30px;
   font-weight: 200px;
   margin-bottom: 20px;
+}
+
+#name-label {
+  margin-top: 40px;
+  margin-left: -20px;
 }
 
 .course-progress .progress {

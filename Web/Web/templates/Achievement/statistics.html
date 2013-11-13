@@ -6,6 +6,12 @@
 
 {% block body %}
 
+  <div class="row">
+    <div class="col-md-12">
+      <div id="name-label" class="col-md-12 progress-label">Статистика: {{ name }}</div>     
+    </div>
+  </div>
+
   {% for course in courses %}
 
   <div class="row course-progress">
