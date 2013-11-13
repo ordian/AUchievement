@@ -19,8 +19,19 @@
     <td>{{ forloop.counter }}</td>
     <td><span>{{ person.last_name }}</span></td>
     <td><span>{{ person.first_name }}</span></td>    
-    <td><a href="/achivements/id/{{ person.id }}"><i class="fa fa-trophy fa-3x silver"></i></a> </td>
-    <td><a href="/statistics/id/{{ person.id }}"><i class="fa fa-bar-chart-o fa-3x silver"></i></a></td>
+
+    <td>
+      <a title="Достижения" href="/achivements/id/{{ person.id }}">
+        <i class="fa fa-trophy fa-3x silver"></i>
+      </a> 
+    </td>
+
+    <td>
+      <a title="Статистика" href="/statistics/id/{{ person.id }}">
+        <i class="fa fa-bar-chart-o fa-3x silver"></i>
+      </a>
+    </td>
+    
   </tr>
     
   {% endfor %}
