@@ -20,7 +20,8 @@ def hot_n_achiever(course_code, limit_list):
     for limit in limit_list:
         achieve_code = "{0}_{1}_{2}".format("HOT", limit, course_code)
         achieve_name = str(hot_n_achieveList.achieve_list[course_code]).replace('$', str(limit))
-        achievements[limit] = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name)[0]
+        image_name = "img/hot_{0}.png".format(str(limit))
+        achievements[limit] = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name, image=image_name)[0]
 
     course_id = Course.objects.get(course_code=course_code).pk
 
