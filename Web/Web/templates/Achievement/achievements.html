@@ -26,7 +26,7 @@
         <div class="badge">
           <img src="{% static badge.image %}" class="badge-img img-circle">
           <div class="badge-title">{{ badge.name }}<hr></div>
-          <div class="badge-description">{{ badge.description }}</div>
+          <div class="badge-description">{{ badge.desc }}</div>
 
         </div>      
       
@@ -42,12 +42,12 @@
   <script type="text/javascript">
   $(function() {
     $('#nav-achievements').addClass('active');
-    /*$('.badge').hover(function() {
+    $('.badge').hover(function() {
       $(this).find('.badge-description').fadeIn('fast');
     },
     function() {
       $(this).find('.badge-description').fadeOut('fast');
-    });*/
+    });
 
     var badges = $('.badge');
     for(var i = 0; i < badges.length; i++) {
