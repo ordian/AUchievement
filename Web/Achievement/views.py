@@ -7,7 +7,6 @@ from django.db import connection
 
 from models import Student, Course, Mark, AchievedAchievement
 
-
 def addStudents(nameList):
     for t in nameList:
         student = Student(first_name=t['name'], last_name=t['surname'])
@@ -111,11 +110,11 @@ def achievements(request, id):
         a_type, param, course_code = code.split('_')
 
         if a_type == 'FULLHW':
-            badge['name'] = u'Полное ДЗ %s' % (param,)
+            badge['name'] = ach.description
         elif a_type == 'HOT':
-            badge['name'] = u'Решил %s задач' % (param,)
+            badge['name'] = ach.description
         elif a_type == 'TOP':
-            badge['name'] = u'Топ %s' % (param,)
+            badge['name'] = ach.description
 
         course_name = Course.objects.get(course_code__exact=course_code).course_name
         badge['description'] = course_name
