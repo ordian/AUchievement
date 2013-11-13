@@ -102,7 +102,7 @@
 
         var data = [];
         var classes = $(doughnuts[i]).attr("class").split(' ');
-        console.debug(classes);
+        var fill_100 = false;        
         for(var j = 0; j < classes.length; j++) {
           var dash_split = classes[j].split('-');
           if(dash_split[0] === 'fill') {
@@ -123,13 +123,25 @@
             if(fill >= 80) {
               color = '#468847';
             }
-            data.push({value: fill, color: color});
-            data.push({value: 100-fill, color: '#D5D5D5'});
+            if(fill == 100) {
+              data.push({value: 100, color: color});
+              data.push({value: 100, color: color});
+              fill_100 = true;
+            } else {
+              data.push({value: fill, color: color});
+              data.push({value: 100-fill, color: '#D5D5D5'});
+            }
+            
             break;
           }
         }
 
-        var my_doughnut = new Chart(doughnuts[i].getContext("2d")).Doughnut(data);
+        if(fill_100) {
+          var options = {  segmentShowStroke : false,};
+          var my_doughnut = new Chart(doughnuts[i].getContext("2d")).Doughnut(data, options);
+        } else {
+          var my_doughnut = new Chart(doughnuts[i].getContext("2d")).Doughnut(data);
+        }
       }
 
       var rows = $('.course-progress');
