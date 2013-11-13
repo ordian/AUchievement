@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import datetime
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -101,8 +103,30 @@ def achievements(request, id):
     achieves = AchievedAchievement.objects.filter(studentID__exact=student.id)
     achievements = [achieve.achievementID for achieve in achieves]
 
+    badges = []
+    for ach in achievements:
+      badge = dict()
+      badge['image'] = ach.image
+      
+      code = ach.code
+      code = code.replace('FULL_HW', 'FULLHW')
+
+      a_type, param, corse_code = code.split('_')
+
+      if a_type == 'FULLHW':
+        badge['name'] = u'Полное ДЗ %s' % (param,)
+      elif a_type == 'HOT':
+        badge['name'] = u'Решил %s задач' % (param,)
+      elif a_type == 'TOP':
+        badge['name'] = u'Топ %ы' % (param,)
+
+      course_name = Course.objects.get(course_code__exact=corse_code).course_name
+      badge['description'] = course_name
+
+      badges.append(badge)
+
     data = {
-      'achievements': achievements,
+      'achievements': badges,
       'name': student.first_name + ' ' + student.last_name
     }
 
