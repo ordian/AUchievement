@@ -11,7 +11,7 @@ def parse(fileOpenXML, time):
     stop = 23
     getname = lambda row: (row[2].value, row[3].value)
     leftborder = 5
-    rightborder = -5
+    rightborder = -7
     convert = to_float
     metaparse(fileOpenXML, subject, skip, stop, getname,
               leftborder, rightborder, convert, time, 0, 1, None, 1)
