@@ -1,13 +1,11 @@
 # coding=utf-8
-import logging
 import os
 import sys
-from timer import timer
-
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 sys.path.append('Web')
-from StudentInfo import StudentInfo
+import logging
+from timer import timer
 from Web.Achievement.views import addMark
 from Web.Achievement.models import Student, Course, Mark
 from django.core.exceptions import ObjectDoesNotExist
@@ -17,34 +15,43 @@ from django.core.exceptions import ObjectDoesNotExist
 def update(studentList):
     studentList = list(studentList)
     total = len(studentList)
-    for num, student_info in enumerate(studentList):
-        assert isinstance(student_info, StudentInfo)
-        
+
+    students_db = {}
+    for s in Student.objects.all():
+        students_db[(s.first_name, s.last_name)] = s
+
+    courses_db = {}
+    for c in Course.objects.all():
+        courses_db[c.course_code] = c
+
+    for num, current_student in enumerate(studentList):
+
         if num % 500 == 0:
-            print "{0}/{1}".format(num, total)
+            print "import {0}/{1}".format(num, total)
 
         try:
-            student = Student.objects.get(first_name=student_info.name, last_name=student_info.surname)
+            student = students_db[(current_student.name, current_student.surname)]
         except:
-            logging.error("student not found %s" % student_info)
+            logging.error("student not found %s" % current_student)
 
         try:
-            course = Course.objects.get(course_code=student_info.subject)
+            course = courses_db[current_student.subject]
         except:
-            logging.error("course not found %s" % student_info)
+            logging.error("course not found %s" % current_student)
 
         try:
             mark = Mark.objects.get(studentID=student.id, courseID=course.id,
-                                    hwNo=student_info.hw, taskNo=student_info.task)
+                                    hwNo=current_student.hw, taskNo=current_student.task)
 
             # если оценка нашлась, смотрим, изменилась ли она
-            new_mark = student_info.score
+            new_mark = current_student.score
             old_mark = mark.result
             if old_mark != new_mark:
                 # если изменилась, пишем новую
                 mark.result = new_mark
-                mark.date = student_info.date
+                mark.date = current_student.date
                 mark.save()
         except ObjectDoesNotExist: # если такой оценки не было, то записываем ее
-            logging.info("writing new mark at student %s" % student_info)
-            addMark(student, course, student_info.hw, student_info.task, student_info.date, student_info.score)
+            logging.info("writing new mark at student %s" % current_student)
+            addMark(student, course, current_student.hw, current_student.task, current_student.date,
+                    current_student.score)

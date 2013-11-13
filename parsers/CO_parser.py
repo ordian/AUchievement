@@ -20,4 +20,4 @@ def parse(fileOpenXML, time):
     metaparse(fileOpenXML, subject, skip, stop, getname,
               2, -4, convert, time, 2, 3, hw_number)
     metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, convert,  time, 3, -1, hw_number)
+              leftborder, rightborder, convert, time, 3, -1, hw_number)

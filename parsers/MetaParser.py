@@ -70,7 +70,6 @@ def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder
 
     workbook = openpyxl.load_workbook(filename=fileOpenXML)
 
-
     for hw, sheet in enumerate(workbook.worksheets[firstSheet:lastSheet]):
         assert isinstance(sheet, openpyxl.worksheet.Worksheet)
         build_hw_count(sheet.rows[skip])
