@@ -52,6 +52,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 
 from Web.Achievement.views import addCourses
 from Web.Achievement.views import addStudents
+from django.db import connection
 
 addStudents(studentList)
 addCourses(courseList)
+
+cursor = connection.cursor()
+with open('sql.commands', 'r') as command_file:
+    for command in command_file.readlines():
+        cursor.execute(command)
