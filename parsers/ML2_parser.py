@@ -23,6 +23,10 @@ def parse(fileOpenXML, time):
         assert isinstance(sheet, openpyxl.worksheet.Worksheet)
         for row in sheet.rows[1:]:
             surname, name = row[0].value.split()
-            for task, score in enumerate(row[1:8]):
-                student = StudentInfo(name, surname, subject, 1 + int(task), 1, simple_score(score), time)
-                StudentList.append(student)
+            for task, score in enumerate(row[1:]):
+                try:
+                    task_num = int(task) + 1
+                    student = StudentInfo(name, surname, subject, task_num, 1, simple_score(score), time)
+                    StudentList.append(student)
+                except:
+                    break # ДЗ кончились
