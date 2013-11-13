@@ -10,6 +10,7 @@ StudentInfoList = []
 
 @timer
 def parse():
+    del StudentInfoList[:]
     time = datetime.datetime.now()
 
     folder = "OpenXML"

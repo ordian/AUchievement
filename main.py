@@ -1,5 +1,8 @@
 # coding=utf-8
 import logging
+import sys
+import sched
+import time
 
 from Achiever import achieve
 from downloader import download
@@ -7,7 +10,7 @@ from parser import parse
 from updater import update
 
 
-if __name__ == "__main__":
+def process(scheduler=None, timer=None):
     # logging.basicConfig(filename="main.log", format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %H:%M:%S', level=logging.DEBUG)
 
     logging.basicConfig(filename="error.log", format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %H:%M:%S',
@@ -28,3 +31,15 @@ if __name__ == "__main__":
     logging.info("--------------------begin achiever----------------------")
     achieve()
     logging.info("---------------------end achiever----------------------")
+    if scheduler:
+        scheduler.enter(timer, 1, process, (scheduler, timer))
+
+
+if __name__ == "__main__":
+    try:
+        timer = int(sys.argv[1])
+        scheduler = sched.scheduler(time.time, time.sleep)
+        scheduler.enter(timer, 1, process, (scheduler, timer))
+        scheduler.run()
+    except:
+        process()
