@@ -7,15 +7,15 @@ from MetaParser import *
 def parse(fileOpenXML, time):
     subject = u"UX"
     skip = 4
-    stop = 30
+    stop = 29
     getname = lambda row: (row[1].value, row[2].value)
     leftborder = 10
     rightborder = None
     convert = to_float
     hw_number_l = lambda task, offset: (task < 12 and "Bash") or (1 and "Python")
     metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, convert, time, 0, -1, hw_number_l)
-    skip = 31
-    stop = 43
+              leftborder, rightborder, convert, time, 0, hw_number_l=hw_number_l, header_row=2)
+    skip = 30
+    stop = 42
     metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, convert, time, 0, -1, hw_number_l)
+              leftborder, rightborder, convert, time, 0, hw_number_l=hw_number_l, header_row=2)
