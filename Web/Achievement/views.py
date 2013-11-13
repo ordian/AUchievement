@@ -132,3 +132,21 @@ def achievements(request, id):
     }
 
     return render(request, 'Achievement/achievements.html', data)
+
+
+def rating(request):
+    cursor = connection.cursor()
+    cursor.execute(
+        '''SELECT studentID_id, SUM(result) as result
+    FROM achievement_mark 
+    GROUP BY studentID_id''')
+    rating = list(cursor.fetchall())
+    rating.sort(key=lambda r:-r[1])
+    top = rating[0][1]
+    stud_rat = []
+    for st, mark_sum in rating:
+        percent = min(int(round(100.*mark_sum/top)), 100)
+
+        student = Student.objects.get(id__exact=st)
+        stud_rat.append((Student.objects.get(id__exact=st), percent))
+    return render(request, 'Achievement/rating.html', {'rating': stud_rat})

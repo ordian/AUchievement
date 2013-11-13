@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'Achievement.views.dashboard', name='dashboard'),
     url(r'^people/?$', 'Achievement.views.people', name='people'),
+    url(r'^rating/?$', 'Achievement.views.rating', name='rating'),
     url(r'^statistics/id/(?P<id>[0-9]+)$', 'Achievement.views.statistics', name='statistics'),
     url(r'^achievements/id/(?P<id>[0-9]+)$', 'Achievement.views.achievements', name='achievements'),
 

@@ -109,17 +109,17 @@ html, body {
 
 /* TABLE */
 
-#people-table {
+table {
   margin-top: 40px;
   background-color: #FAFAFA;
 }
 
-#people-table td,
-#people-table th {
+table td,
+table th {
   font-size: 18px;
 }
 
-#people-table tr:hover .silver {
+table tr:hover .silver {
   color: #FADA15;
 }
 
