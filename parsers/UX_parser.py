@@ -6,8 +6,8 @@ from MetaParser import *
 #WARNING! NOT TESTED YET
 def parse(fileOpenXML, time):
     subject = u"UX"
-    skip = 5
-    stop = 31
+    skip = 4
+    stop = 30
     getname = lambda row: (row[1].value, row[2].value)
     leftborder = 10
     rightborder = None
@@ -15,4 +15,7 @@ def parse(fileOpenXML, time):
     hw_number_l = lambda task, offset: (task < 12 and "Bash") or (1 and "Python")
     metaparse(fileOpenXML, subject, skip, stop, getname,
               leftborder, rightborder, convert, time, 0, -1, hw_number_l)
-   
+    skip = 31
+    stop = 43
+    metaparse(fileOpenXML, subject, skip, stop, getname,
+              leftborder, rightborder, convert, time, 0, -1, hw_number_l)
