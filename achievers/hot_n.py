@@ -2,8 +2,10 @@
 import os
 import sys
 
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 sys.path.append('Web')
+from achievers import hot_n_achieveList
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
@@ -17,7 +19,8 @@ def hot_n_achiever(course_code, limit_list):
 
     for limit in limit_list:
         achieve_code = "{0}_{1}_{2}".format("HOT", limit, course_code)
-        achievements[limit] = Achievement.objects.get_or_create(code=achieve_code)[0]
+        achieve_name = str(hot_n_achieveList.achieve_list[course_code]).replace('$', str(limit))
+        achievements[limit] = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name)[0]
 
     course_id = Course.objects.get(course_code=course_code).pk
 
@@ -33,4 +36,5 @@ def hot_n_achiever(course_code, limit_list):
     for student_id in score_sum.keys():
         for limit in limit_list:
             if score_sum[student_id] >= limit:
-                AchievedAchievement.objects.get_or_create(achievementID=(achievements[limit]), studentID=student_dict[student_id])
+                AchievedAchievement.objects.get_or_create(achievementID=(achievements[limit]),
+                                                          studentID=student_dict[student_id])

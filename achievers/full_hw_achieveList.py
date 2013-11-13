@@ -1,6 +1,6 @@
 # coding=utf-8
 
-# ... N раз
+
 achieve_list = {}
 achieve_list["GT"] = "Я тоже люблю кальвадос"
 achieve_list["CO"] = "Удачная комбинация"

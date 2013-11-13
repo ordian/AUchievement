@@ -1,13 +1,13 @@
 #coding=utf-8
 
-import operator
 import os
 import sys
-from achievers import top_n_achieveList
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 sys.path.append('Web')
+import operator
+from achievers import top_n_achieveList
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
@@ -19,7 +19,7 @@ def top_n_achiever(course_code, top_num):
     """
     achieve_code = "{0}_{1}_{2}".format("TOP", top_num, course_code)
     achieve_name = top_n_achieveList.achieve_list[course_code]
-    achieve = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name)[0]
+    achieve = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name, image="img/top_n.png")[0]
     course_id = Course.objects.get(course_code=course_code).pk
 
     score_sum = {}
