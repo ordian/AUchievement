@@ -6,7 +6,6 @@ from MetaParser import *
 
 
 def parse(fileOpenXML, time):
-    # WARNING: not tested yet
     subject = u"ML1"
     skip = 2
     stop = 23
@@ -16,4 +15,3 @@ def parse(fileOpenXML, time):
     convert = to_float
     metaparse(fileOpenXML, subject, skip, stop, getname,
               leftborder, rightborder, convert, time, 0, 1, None, 1)
-   
