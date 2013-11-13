@@ -3,11 +3,11 @@
 import operator
 import os
 import sys
-from achievers import top_n_achieveList
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 sys.path.append('Web')
+from achievers import top_n_achieveList
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
 
