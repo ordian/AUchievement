@@ -25,7 +25,7 @@ def full_hw_achiever(course_code):
         for hw_number in range(1, hw_max + 1):
             achieve_code = "{0}_{1}_{2}".format("FULL_HW", hw_number, course_code)
             achieve_name = full_hw_achieveList.achieve_list[course_code]
-            achieve = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name)[0]
+            achieve = Achievement.objects.get_or_create(code=achieve_code, description=achieve_name, image="img/full_hw.png")[0]
             hw_marks = marks.filter(hwNo=hw_number)
             hw_done = True
             if len(hw_marks) != 0:

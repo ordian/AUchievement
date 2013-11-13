@@ -9,7 +9,7 @@ from timer import timer
 
 @timer
 def achieve():
-    solved_count = [x + 10 for x in range(0, 100, 10)]
+    solved_count = [5, 10, 25, 50, 100]
 
     for course in courses.spreadsheets.keys():
         print course
