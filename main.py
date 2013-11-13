@@ -3,7 +3,7 @@ import logging
 import sys
 import time
 
-from achiever import achieve
+from Achiever import achieve
 from downloader import download
 from parser import parse
 from updater import update
