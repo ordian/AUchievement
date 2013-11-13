@@ -36,10 +36,10 @@
   $(function() {
     $('#nav-achievements').addClass('active');
     $('.badge').hover(function() {
-      $(this).find('.badge-title, .badge-description').fadeIn('fast');
+      $(this).find('.badge-description').fadeIn('fast');
     },
     function() {
-      $(this).find('.badge-title, .badge-description').fadeOut('fast');
+      $(this).find('.badge-description').fadeOut('fast');
     });
 
     var badges = $('.badge');

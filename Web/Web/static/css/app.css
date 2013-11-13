@@ -55,7 +55,7 @@ html, body {
   height: 200px;
   margin-right: 20px;
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   display: none;
 }
 
@@ -75,24 +75,25 @@ html, body {
 }
 
 .badge-title {
-  display: none;
+  display: block;
   position: absolute;
-  top:42%;
+  top:110%;
   text-align: center;
   width: 200px;  
   z-index: 2;
   font-size: 18px;
+  color:#555;
 }
 
 .badge-title hr {
-  width: 80%;
+  width: 0%;
 }
 
 .badge-description {
 
   display: none;
   position: absolute;
-  top:65%;
+  top:50%;
   text-align: center;
   width: 200px;  
   z-index: 2;
