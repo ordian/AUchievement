@@ -33,4 +33,4 @@ def parse():
     ML2_parser.parse(ML2_file, time)
     # UX_parser.parse(UX_file, time)
 
-    return StudentInfoListS
+    return StudentInfoList
