@@ -28,6 +28,42 @@ html, body {
   margin-bottom: 20px;
 }
 
+.progress-hover {
+  font-size: 30px;
+  color: #555;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  text-align: center;
+  width: 200px;
+  display: none;
+}
+
+.progress-overall:hover .progress-hover,
+.progress-overall:hover .progress-label {
+  display: block;
+  color: #FFF;
+}
+
+.progress-overall:hover {
+  background-color: #888;
+}
+
+.progress-overall:hover {
+  color: #FFF;
+}
+
+.progress-overall:hover canvas {
+  filter: brightness(0.5);
+  
+  -ilter: brightness(0.5);
+  -webkit-filter: brightness(0.5);
+  -o-filter: brightness(0.5);
+  -ms-filter: brightness(0.5);
+}
+
 #name-label {
   margin-top: 40px;
   margin-left: -20px;

@@ -37,7 +37,8 @@
     <div class="col col-md-4 progress-overall pull-right">
       <div class="row">
         <div class="col-md-12 progress-label">От возможного: {{ overall|get:course }}%</div> 
-        <canvas class="progress-doughnut fill-{{ overall|get:course }}" width="200px" height="200px"></canvas>         
+        <canvas class="progress-doughnut fill-{{ overall|get:course }}" width="200px" height="200px"></canvas> 
+        <div class="progress-hover">{{ current|get:course }}/{{ total|get:course }}</div>        
       </div>
     </div>
   </div>

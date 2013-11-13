@@ -61,6 +61,8 @@ def statistics(request, id):
 
     courses = Course.objects.all()
     course_overall = dict()
+    course_total = dict()
+    course_current = dict()
     for course in courses:
         cursor = connection.cursor()
         cursor.execute(
@@ -83,11 +85,15 @@ def statistics(request, id):
             percent = min(int(percent_f), 100)
 
         course_overall[course.course_name] = percent
+        course_total[course.course_name] = total
+        course_current[course.course_name] = current
 
     data = {
         'courses': courses_list,
         'activities': homework_completion,
         'overall': course_overall,
+        'total': course_total,
+        'current': course_current,
         'name': student.first_name + ' ' + student.last_name
     }
 
