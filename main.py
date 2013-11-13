@@ -17,7 +17,7 @@ if __name__ == "__main__":
                             level=logging.ERROR)
 
         logging.info("--------------------begin downloading----------------------")
-        download()
+        # download()
         logging.info("---------------------end downloading----------------------")
 
         logging.info("--------------------begin parsing----------------------")
@@ -36,7 +36,10 @@ if __name__ == "__main__":
 
 
     while True:
-        if len(sys.argv) > 1:
-            process(int(sys.argv[1]))
+        #todo replace to 3600
+
+        if len(sys.argv) < 2:
+            process(0)
+            break
         else:
-            break # todo replace to 3600
+            process(int(sys.argv[1]))
