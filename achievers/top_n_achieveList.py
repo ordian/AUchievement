@@ -1,10 +1,12 @@
-AchieveList = {}
-AchieveList["GT"]    = "Графоман"
-AchieveList["CO"]    = "Комбинатор"
-AchieveList["AS"]    = "Что-то я поГорячился"
-AchieveList["AL1SE"] = "АЛГОЛитмист"
-AchieveList["AL1BI"] = "АЛГОЛитмист"
-AchieveList["AL2"]   = "АЛГОЛитмист"
-AchieveList["ML1"]   = "Логичный"
-AchieveList["ML2"]   = "Логичный"
-AchieveList["UX"]    = "Питонист-башолюб"
+# coding=utf-8
+
+achieve_list = {}
+achieve_list["GT"]    = "Графоман"
+achieve_list["CO"]    = "Великий комбинатор"
+achieve_list["AS"]    = "Что-то я поГорячился"
+achieve_list["AL1SE"] = "АЛГОЛитмист"
+achieve_list["AL1BI"] = "АЛГОЛитмист"
+achieve_list["AL2"]   = "АЛГОЛитмист"
+achieve_list["ML1"]   = "Логичный"
+achieve_list["ML2"]   = "Логичный"
+achieve_list["UX"]    = "Питонист-башолюб"
