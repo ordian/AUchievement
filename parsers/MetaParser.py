@@ -16,7 +16,7 @@ def to_float(num):
 
 
 def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder, convert_score, time,
-              firstSheet=0, lastSheet=None, hw_number_l=None):
+              firstSheet=0, lastSheet=None, hw_number_l=None, header_row=0):
     """
     Парсинг файла
     @param fileOpenXML: файл в формате OpenXML
@@ -77,7 +77,7 @@ def metaparse(fileOpenXML, subject, skip, stop, getname, leftborder, rightborder
             surname, name = getname(row)
             name = name.replace(u'ё', u'е')
             surname = surname.replace(u'ё', u'е')
-            header = sheet.rows[0]
+            header = sheet.rows[header_row]
             for task, score in enumerate(row[leftborder:rightborder]):
                 task_number = header[task + leftborder].value
                 if task_number is None: continue
