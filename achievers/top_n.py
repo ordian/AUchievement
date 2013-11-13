@@ -1,12 +1,12 @@
 #coding=utf-8
 
-import operator
 import os
 import sys
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Web.Web.settings")
 sys.path.append('Web')
+import operator
 from achievers import top_n_achieveList
 from Web.Achievement.models import Mark, Course, Student, Achievement, AchievedAchievement
 
