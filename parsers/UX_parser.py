@@ -14,5 +14,5 @@ def parse(fileOpenXML, time):
     convert = to_float
     hw_number_l = lambda task, offset: (task < 12 and "Bash") or (1 and "Python")
     metaparse(fileOpenXML, subject, skip, stop, getname,
-              leftborder, rightborder, convert, time, hw_number_l)
+              leftborder, rightborder, convert, time, 0, -1, hw_number_l)
    
