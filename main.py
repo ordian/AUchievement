@@ -17,7 +17,7 @@ if __name__ == "__main__":
                             level=logging.ERROR)
 
         logging.info("--------------------begin downloading----------------------")
-        # download()
+        download()
         logging.info("---------------------end downloading----------------------")
 
         logging.info("--------------------begin parsing----------------------")
