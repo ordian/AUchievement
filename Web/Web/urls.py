@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', 'Achievement.views.dashboard', name='dashboard'),
     url(r'^achievements/?$', 'Achievement.views.achievements', name='achievements'),
     url(r'^people/?$', 'Achievement.views.people', name='people'),
-    url(r'^statistics/?$', 'Achievement.views.statistics', name='statistics'),
+    url(r'^statistics/id/(?P<id>[0-9]+)$', 'Achievement.views.statistics', name='statistics'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

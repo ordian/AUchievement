@@ -1,26 +1,27 @@
 {% extends "Achievement/base.html" %}
 {% load staticfiles %}
+{% load achievement_extras %}
 
 {% block title %}Статистика{% endblock title %}
 
 {% block body %}
+
+  {% for course in courses %}
+
   <div class="row course-progress">
     <div class="col col-md-7 progress-daily">
       
       <div class="row">
-        <div class="col-md-7 progress-label">Алгебра</div>          
+        <div class="col-md-12 progress-label">{{ course }}</div>          
       </div>
       
       <div class="row">
         <div class="col-md-7 progress-log">
-          <div class="activity">1</div>
-          <div class="activity">2</div>
-          <div class="activity">4</div>
-          <div class="activity">4</div>
-          <div class="activity">4</div>
-          <div class="activity">1</div>
-          <div class="activity">1</div>
+          {% for hw in activities|get:course|get:'homeworks' %}
 
+            <div class="activity">{{activities|get:course|get:'completion'|get:hw}}</div>
+
+          {% endfor %}
           <canvas class="log-canvas" width="650px" height="200px"></canvas>
         </div>    
       </div>
@@ -29,88 +30,14 @@
 
     <div class="col col-md-4 progress-overall pull-right">
       <div class="row">
-        <div class="col-md-12 progress-label">Выполнил</div> 
-        <canvas class="progress-doughnut fill-12" width="200px" height="200px"></canvas>         
+        <div class="col-md-12 progress-label">От возможного: {{ overall|get:course }}%</div> 
+        <canvas class="progress-doughnut fill-{{ overall|get:course }}" width="200px" height="200px"></canvas>         
       </div>
     </div>
   </div>
+
+  {% endfor %}
   
-
-  <div class="row course-progress">
-    <div class="col col-md-7 progress-daily">
-      <div class="row">
-        <div class="col-md-7 progress-label">Комбинаторика</div>          
-      </div>
-
-      <div class="row">
-        <div class="col-md-7 progress-log">
-          <div class="activity">6</div>
-          <div class="activity">2</div>
-          <div class="activity">3</div>
-          <div class="activity">4</div>
-          <div class="activity">5</div>
-          <div class="activity">6</div>
-
-          <canvas class="log-canvas" width="650px" height="200px"></canvas>
-        </div>    
-      </div>
-    </div>
-    <div class="col col-md-4 progress-overall pull-right">
-      <div class="row">
-        <div class="col-md-12 progress-label">Выполнил</div> 
-        <canvas class="progress-doughnut fill-40" width="200px" height="200px"></canvas>         
-      </div>
-    </div>
-  </div>
-
-  <div class="row course-progress">
-    <div class="col col-md-7 progress-daily">
-      <div class="row">
-        <div class="col-md-7 progress-label">Графы</div>          
-      </div>
-
-      <div class="col-md-7 progress-log">
-          <div class="activity">2</div>
-          <div class="activity">1</div>
-          <div class="activity">3</div>
-          <div class="activity">0</div>
-          <div class="activity">8</div>
-          <div class="activity">5</div>
-
-          <canvas class="log-canvas" width="650px" height="200px"></canvas>
-        </div>   
-    </div>
-    <div class="col col-md-4 progress-overall pull-right">
-      <div class="row">
-        <div class="col-md-12 progress-label">Выполнил</div> 
-        <canvas class="progress-doughnut fill-60" width="200px" height="200px"></canvas>         
-      </div>
-    </div>
-  </div>
-
-  <div class="row course-progress">
-    <div class="col col-md-7 progress-daily">
-      <div class="row">
-        <div class="col-md-7 progress-label">Матлогика</div>          
-      </div>
-
-      <div class="col-md-7 progress-log">
-          <div class="activity">2</div>
-          <div class="activity">4</div>
-          <div class="activity">2</div>
-          <div class="activity">1</div>
-          <div class="activity">3</div>
-
-          <canvas class="log-canvas" width="650px" height="200px"></canvas>
-        </div>   
-    </div>
-    <div class="col col-md-4 progress-overall pull-right">
-      <div class="row">
-        <div class="col-md-12 progress-label">Выполнил</div> 
-        <canvas class="progress-doughnut fill-80" width="200px" height="200px"></canvas>         
-      </div>
-    </div>
-  </div>
 {% endblock body %}
 
 {% block scripts %}
@@ -126,20 +53,32 @@
         var data = [];
         var labels = [];
         var max = 0;
+        var min = 1000000;
+        var avg_dif = 0
         for(var j = 0; j < activity.length; j++) {
           var value = parseInt(activity[j].innerText, 10);
           if(value > max) {
             max = value;
           }
+          if(value < min) {
+            min = value;
+          }
+          if(i > 0) {
+            Math.abs(value - prev);
+          }
           data.push(activity[j].innerText);
           labels.push('hw '+(j+1).toString());
+          var prev = value;
         }
+        avg_dif/=1.0*activity.length;
 
         var options = {
           scaleOverride: true, 
-          scaleStartValue: 0, 
-          scaleStepWidth: 1,  
-          scaleSteps: max
+          scaleStartValue: min-2, 
+          scaleStepWidth: 2,  
+          scaleSteps: 2,
+          scaleLineWidth : 1,
+          barValueSpacing: 10
         };
 
         var chart_data = {
