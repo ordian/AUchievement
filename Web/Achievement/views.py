@@ -1,12 +1,11 @@
 # coding=utf-8
 
-import datetime
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.db.models import Sum, Max
+from django.db.models import Sum
 from django.db import connection
 
-from models import Student, Course, Mark, AchievedAchievement, Achievement
+from models import Student, Course, Mark, AchievedAchievement
 
 
 def addStudents(nameList):
@@ -61,7 +60,7 @@ def statistics(request, id):
             'completion': course_mark[course]
         }
 
-    courses = Course.objects.all();
+    courses = Course.objects.all()
     course_overall = dict()
     for course in courses:
         cursor = connection.cursor()
