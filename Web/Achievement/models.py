@@ -23,8 +23,8 @@ class Mark(models.Model):
 class Achievement(models.Model):
     code = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
-    name = models.CharField(max_length=100)
-    image = models.CharField(max_length=1000)
+    name = models.CharField(max_length=100, blank=True)
+    image = models.CharField(max_length=1000, blank=True)
 
 
 class AchievedAchievement(models.Model):
