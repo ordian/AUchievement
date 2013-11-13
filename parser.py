@@ -18,7 +18,7 @@ def parse():
     GT_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['GT']), ext)
     CO_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['CO']), ext)
     AS_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AS']), ext)
-    AL1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1']), ext)
+    AL1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL1SE']), ext)
     AL2_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['AL2']), ext)
     ML1_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML1']), ext)
     ML2_file = "{0}.{1}".format(os.path.join(folder, courses.spreadsheets['ML2']), ext)
@@ -31,4 +31,4 @@ def parse():
     ML1_parser.parse(ML1_file, time)
     ML2_parser.parse(ML2_file, time)
 
-    return StudentInfoList
+    return StudentInfoListS
