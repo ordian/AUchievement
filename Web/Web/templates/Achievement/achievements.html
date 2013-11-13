@@ -7,7 +7,7 @@
 
   <div class="ribbon">
     <div class="ribbon-stitches-top"></div>
-      <strong class="ribbon-content"><h1>Твои Достижения</h1></strong>
+      <strong class="ribbon-content"><h1>Достижения: {{ name }}</h1></strong>
     <div class="ribbon-stitches-bottom"></div>
   </div>
 
@@ -17,9 +17,9 @@
     <div class="col-md-4 badge">
 
       <div class="badge">
-        <img src="{% static "img/pyromaniac.png" %}" class="badge-img img-circle">
-        <div class="badge-title">{{ badge.code }}<hr></div>
-        <div class="badge-description">{{ badge.description }}</div>
+        <img src="{% static badge.image %}" class="badge-img img-circle">
+        <div class="badge-title">{{ badge.name }}<hr></div>
+        <div class="badge-description">{{ badge.description }} {{ badge.code }}</div>
 
       </div>      
     

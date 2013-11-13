@@ -24,7 +24,7 @@ class Achievement(models.Model):
     code = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     name = models.CharField(max_length=100, blank=True)
-    image = models.CharField(max_length=1000, blank=True)
+    image = models.CharField(max_length=1000, default='crown-bronze.png')
 
 
 class AchievedAchievement(models.Model):
