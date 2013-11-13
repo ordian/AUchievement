@@ -248,3 +248,14 @@ html, body {
 .people-list td > span {
   font-size: 18px;
 }
+
+/* TABLE */
+
+table th {
+  font-size: 18px;
+}
+
+#people-table {
+  margin-top: 40px;
+  background-color: #FAFAFA;
+}
