@@ -100,7 +100,7 @@ def achievements(request, id):
     achieves = AchievedAchievement.objects.filter(studentID__exact=student.id)
     achievements = [achieve.achievementID for achieve in achieves]
 
-    badges = []
+    badges = dict()
     for ach in achievements:
         badge = dict()
         badge['image'] = ach.image
@@ -120,10 +120,13 @@ def achievements(request, id):
         course_name = Course.objects.get(course_code__exact=course_code).course_name
         badge['description'] = course_name
 
-        badges.append(badge)
+        if course_name not in badges:
+          badges[course_name] = []
+        badges[course_name].append(badge)
 
     data = {
-        'achievements': badges,
+        'badges': badges,
+        'course_order': sorted(badges.keys()),
         'name': student.first_name + ' ' + student.last_name
     }
 

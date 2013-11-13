@@ -1,5 +1,7 @@
 {% extends "Achievement/base.html" %}
 {% load staticfiles %}
+{% load achievement_extras %}
+
 
 {% block title %}Достижения{% endblock title %}
 
@@ -11,23 +13,28 @@
     <div class="ribbon-stitches-bottom"></div>
   </div>
 
-  <div class="row badges">
+  
     
-    {% for badge in achievements %}
-    <div class="col-md-4 badge">
-
-      <div class="badge">
-        <img src="{% static badge.image %}" class="badge-img img-circle">
-        <div class="badge-title">{{ badge.name }}<hr></div>
-        <div class="badge-description">{{ badge.description }} {{ badge.code }}</div>
-
-      </div>      
-    
+    {% for course in course_order %}
+    <div class="row">
+      <div class="col-md-12"><h1>{{course}}</h1></div>
     </div>
+    <div class="row badges">
+      {% for badge in badges|get:course %}
+      <div class="col-md-4 badge">
+
+        <div class="badge">
+          <img src="{% static badge.image %}" class="badge-img img-circle">
+          <div class="badge-title">{{ badge.name }}<hr></div>
+          <div class="badge-description">{{ badge.description }}</div>
+
+        </div>      
+      
+      </div>
+      {% endfor %}
+
+    </div> <!-- /.row badges -->
     {% endfor %}
-
-  </div> <!-- /.row badges -->
-
   
 {% endblock body %}
 
